@@ -16,12 +16,13 @@ def get_password_hash(password: str) -> str:
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     return pwd_context.verify(plain_password, hashed_password)
 
-def register_user(db: Session, email: str, password: str):
+
+def register_user(db: Session, email: str, password: str, role: str = "user"):
     user = db.query(User).filter(User.email == email).first()
     if user:
         return None
     hashed_password = get_password_hash(password)
-    new_user = User(email=email, hashed_password=hashed_password)
+    new_user = User(email=email, hashed_password=hashed_password, role=role)
     db.add(new_user)
     db.commit()
     db.refresh(new_user)

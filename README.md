@@ -70,4 +70,4 @@ pytest test_api.py
 - Acceso a ruta protegida con/sin token
 
 ---
-Autor: Tu Nombre | 2025
+Autor: Cesar Cifuentes | Optativa1

@@ -6,17 +6,20 @@ from pydantic import BaseModel, EmailStr
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
+
 class UserRegister(BaseModel):
     email: EmailStr
     password: str
+    role: str = "user"
 
 class UserLogin(BaseModel):
     email: EmailStr
     password: str
 
+
 @router.post("/register")
 def register(user: UserRegister, db: Session = Depends(get_db_session)):
-    db_user = register_user(db, user.email, user.password)
+    db_user = register_user(db, user.email, user.password, user.role)
     if not db_user:
         raise HTTPException(status_code=400, detail="Email ya registrado")
     return {"message": "Usuario registrado correctamente"}
