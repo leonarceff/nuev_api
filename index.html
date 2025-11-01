@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Frontend API - Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Acceso al sistema</h1>
+
+  <section id="auth-section">
+    <div id="login-form">
+      <h3>Login</h3>
+      <input type="text" id="login-username" placeholder="Usuario">
+      <input type="password" id="login-password" placeholder="Contraseña">
+      <button id="btn-login">Ingresar</button>
+    </div>
+
+    <div id="register-form">
+      <h3>Registrar nuevo usuario</h3>
+      <input type="text" id="reg-username" placeholder="Usuario">
+      <input type="password" id="reg-password" placeholder="Contraseña">
+      <button id="btn-register">Registrar</button>
+    </div>
+  </section>
+
+  <section id="data-section" style="display:none;">
+    <h2>Municipios</h2>
+    <ul id="municipios-list"></ul>
+    <input type="text" id="new-municipio-name" placeholder="Nuevo municipio">
+    <button id="btn-create-municipio">Crear</button>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
