@@ -13,13 +13,16 @@ app.add_middleware(
 )
 
 
-# Importar y registrar routers aquí (auth, territorio, municipio)
+# Importar y registrar routers aquí
 from controllers.auth_controller import router as auth_router
 from controllers.territorio_controller import router as territorio_router
 from controllers.municipio_controller import router as municipio_router
+from controllers.user_controller import router as user_router
+
 app.include_router(auth_router)
 app.include_router(territorio_router)
 app.include_router(municipio_router)
+app.include_router(user_router)
 
 @app.get("/")
 def root():
