@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextField, Button, Container, Typography, Box, Alert } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { endpoints } from '../api';
+import { authApi } from '../api';
 
 export default function LoginPage() {
   const [formData, setFormData] = React.useState({
@@ -21,8 +21,8 @@ export default function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await endpoints.auth.login(formData);
-      localStorage.setItem('token', response.data.access_token);
+      const response = await authApi.login(formData);
+      localStorage.setItem('token', response.data.access_token || response.access_token);
       navigate('/admin');
     } catch (error) {
       setError(error.response?.data?.detail || 'Error al iniciar sesión');

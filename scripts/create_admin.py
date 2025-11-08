@@ -1,17 +1,16 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from models.user_model import User
+from sqlalchemy.orm import Session
+from config.database import SessionLocal, init_db
 from services.auth_service import register_user
-from config.database import get_db_session, SessionLocal
 
 def create_admin():
+    init_db()
     db = SessionLocal()
     try:
         admin = register_user(db, "admin@example.com", "admin123", "admin")
         if admin:
             print("Usuario administrador creado exitosamente")
         else:
-            print("El usuario ya existe o hubo un error")
+            print("El usuario administrador ya existe")
     finally:
         db.close()
 

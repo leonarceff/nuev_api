@@ -9,7 +9,7 @@ import {
   MenuItem,
   Alert,
 } from '@mui/material';
-import { endpoints } from '../api';
+import { authApi, municipiosApi, territoriosApi } from '../api';
 
 export default function CreateEntityDialog({ open, type, onClose }) {
   const [formData, setFormData] = React.useState({});
